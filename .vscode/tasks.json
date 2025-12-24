@@ -2,10 +2,12 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Run Spring Boot",
+      "label": "Run Spring Boot - Booting",
       "type": "shell",
       "command": "./mvnw",
-      "args": ["spring-boot:run"],
+      "args": [
+        "spring-boot:run"
+      ],
       "group": "build",
       "presentation": {
         "echo": true,
@@ -15,7 +17,28 @@
       },
       "options": {
         "cwd": "${workspaceFolder}/booting"
-      }
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Spring Boot - RoomClr",
+      "type": "shell",
+      "command": "./mvnw",
+      "args": [
+        "spring-boot:run",
+        "-Dspring-boot.run.arguments=--max=10"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/room-clr"
+      },
+      "problemMatcher": []
     }
   ]
 }
