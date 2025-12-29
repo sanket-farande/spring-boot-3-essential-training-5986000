@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title> Landon Hotel | Rooms</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>Employee ID</th>
+            <th>Employee First Name</th>
+            <th>Employee Last Name</th>
+            <th>Position</th>
+        </tr>
+        <tr th:each="employee:${employees}">
+            <td th:text="${employee.id}">Number</td>
+            <td th:text="${employee.firstname}">First Name</td>
+            <td th:text="${employee.lastname}">Last Name</td>
+            <td th:text="${employee.position}">Position</td>
+        </tr>
+    </table>
+</body>
+
+</html>

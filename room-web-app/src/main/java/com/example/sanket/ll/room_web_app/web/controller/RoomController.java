@@ -24,6 +24,7 @@ public class RoomController {
     }
 
     @GetMapping
+    // Pass data to the view using Model
     public String getRoomsPage(Model model){
         List<RoomEntity> roomEntities = this.roomRepository.findAll();
         List<Room> rooms = new ArrayList<>(roomEntities.size());
