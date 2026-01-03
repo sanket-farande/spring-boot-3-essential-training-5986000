@@ -8,12 +8,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 // JPA API based annotations like @Entity, @Table, @Id, @Column, @GeneratedValue are used to map this class to a database table.
 @Entity
 @Table(name="ROOMS")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class RoomEntity {
     @Id
     @Column(name="ROOM_ID")  
