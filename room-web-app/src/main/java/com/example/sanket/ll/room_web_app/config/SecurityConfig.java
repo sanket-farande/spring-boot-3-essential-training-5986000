@@ -17,23 +17,24 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
+    // method to configure security filter chain, used to define security policies
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-            .authorizeHttpRequests((requests) -> requests
-                    .requestMatchers("/", "/api/*", "/api/rest/*").permitAll()
-                    .anyRequest().authenticated())
-            .formLogin((form) -> form
-                    .loginPage("/login")
-                    .permitAll())
-            .logout((logout -> logout.permitAll()));
-        
         // http
-        //     .csrf(csrf -> csrf.disable())
-        //     .authorizeHttpRequests(authz -> authz
-        //         .anyRequest().permitAll()
-        //     )
-        //     .httpBasic(httpBasic -> httpBasic.disable())
-        //     .formLogin(form -> form.disable());
+        //     .authorizeHttpRequests((requests) -> requests
+        //             .requestMatchers("/", "/api/*", "/api/rest/*").permitAll()
+        //             .anyRequest().authenticated())
+        //     .formLogin((form) -> form
+        //             .loginPage("/login")
+        //             .permitAll())
+        //     .logout((logout -> logout.permitAll()));
+        
+        http
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(authz -> authz
+                .anyRequest().permitAll()
+            )
+            .httpBasic(httpBasic -> httpBasic.disable())
+            .formLogin(form -> form.disable());
 
         return http.build();
     }

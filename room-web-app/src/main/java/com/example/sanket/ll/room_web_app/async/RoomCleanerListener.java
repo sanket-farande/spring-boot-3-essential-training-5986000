@@ -21,6 +21,7 @@ public class RoomCleanerListener {
         this.roomService = roomService;
     }
 
+    // method to receive messages from the queue
     public void receiveMessage(String message) {
         try {
             AsyncPayload payload = mapper.readValue(message, AsyncPayload.class);
