@@ -31,5 +31,13 @@ public class Main {
         Thread.sleep(3000);
         System.out.println("Status from main thread " + thread5.isInterrupted());
 
+        // Syncronization with Threads
+        int[] marks = new int[10];
+        MarksJoinThread mt = new MarksJoinThread(marks);
+        AverageThread at = new AverageThread(marks);
+        mt.start();
+        // ensure mt completes before starting at
+        mt.join();
+        at.start();
     }
 }
