@@ -18,8 +18,22 @@ public class CountingRunnable implements Runnable { // Ch02-Step 3 - Implement c
     // Ch02-Step 4 - Override the run() method
     @Override
     public void run() {
-        System.out.println("Counting started for " + this.d.getName());
-        this.totalVotes = this.d.getVotes().stream().mapToLong(Long::longValue).sum();
-        System.out.println("Counting ended for " + this.d.getName() + " " + this.totalVotes);
+        try {
+            System.out.println("Counting started for " + this.d.getName());
+            while (!doStop) {
+                this.totalVotes = this.d.getVotes().stream().mapToLong(Long::longValue).sum();
+                System.out.println("Counting for " + this.d.getName() + " " + this.totalVotes);
+                Thread.sleep(2000);
+                // Solution2: Helpful when its not blocked
+                if(Thread.interrupted()){
+                    doStop = true;
+                }            }
+        } catch (InterruptedException e) {
+            // Solution1: Helpful when its blocked during sleep
+            e.printStackTrace();
+            doStop = true;
+        } finally {            
+            System.out.println("Counting ended for " + this.d.getName());
+        }
     }
 }
